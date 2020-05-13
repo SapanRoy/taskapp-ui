@@ -1,0 +1,25 @@
+<div class="d-flex flex-column bg-light mb-3 w-30" cdkDropList id="{{inputList.id}}" [cdkDropListData]="inputList" [cdkDropListConnectedTo]="listsConnectedTo"
+  (cdkDropListDropped)="onCardDrop($event)">
+  <div class="d-flex flex-row">
+    <div class="p-2 flex-grow-1">
+      <p class="text-secondary">{{inputList.name}}</p>
+    </div>
+    <div class="p-0 m-0">
+      <button type="button" (click)="confirmAndDeleteList(currentList.id)" class="btn btn-link" title="Delete list">
+        <p class="text-danger">x</p>
+      </button>
+    </div>
+  </div>
+  <div>
+    <div class="p-2 grab" *ngIf="inputList.cards">
+      <div class="d-flex flex-column" *ngFor="let card of inputList.cards">
+        <component-card cdkDrag [cdkDragData]="card" [parentListId]="inputList.id" [inputCard]="card"></component-card>
+      </div>
+    </div>
+  </div>
+  <div class="p-2 text-right">
+    <button type="button" class="btn btn-sm btn-link" title="Add card to list." (click)="openAddCardDialog()">
+      <p class="text-info">+ Card</p>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<form [formGroup]="listForm" (ngSubmit)="addList()">
+    <div class="form-row">
+      <div class="text-center">
+        <h5>Add List</h5>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <p class="text-secondary">Name</p>
+        <input type="text" formControlName="name" class="form-control" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+          <div *ngIf="submitted && formControls.name.errors">
+              <p class="text-danger text-small">Name is required</p>
+            </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <div class="text-center">
+          <button (mousedown)="close()" class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+      <div class="form-group col">
+        <button class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </form>

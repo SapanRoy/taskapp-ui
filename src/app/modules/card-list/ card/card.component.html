@@ -1,0 +1,10 @@
+<div class="d-flex flex-row border border-success mt-1">
+  <div class="p-2 flex-grow-1">
+    <p class="text-secondary">{{inputCard.name}}</p>
+  </div>
+  <div class="p-0 m-0" title="Delete card from list.">
+    <button type="button" (click)="confirmAndDeleteCard()" class="btn btn-link">
+      <p class="text-danger">x</p>
+    </button>
+  </div>
+</div>
