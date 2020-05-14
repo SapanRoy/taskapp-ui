@@ -50,9 +50,9 @@ export class ListComponent implements OnInit {
         this.localCardListModel = modelData;
         // generate ids of list for drag and drop
         this.listsConnectedTo = new Array<string>();
-        for (let list of this.localCardListModel.lists) {
+        this.localCardListModel.lists.map(list=>{
           this.listsConnectedTo.push(list.id);
-        };
+        });
       }
     });
 
@@ -81,7 +81,7 @@ export class ListComponent implements OnInit {
   openAddCardDialog() {
     this.dialog.open(NewCardModelComponent, {
       data: {
-        listId: this.inputList.id,
+        list: this.inputList
       },
       height: AppConfig.ModelHeight,
       width: AppConfig.ModelWidth,

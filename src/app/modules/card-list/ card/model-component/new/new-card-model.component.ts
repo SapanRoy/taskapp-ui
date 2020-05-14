@@ -20,6 +20,7 @@ import { CardListModel, List  } from '../../../model/card-list.model';
 })
 export class NewCardModelComponent implements OnDestroy, OnInit {
   parentListId: string;
+  parentListName: string;
   cardName = new FormControl();
   card: Card;
   private cardListModel: CardListModel;
@@ -37,7 +38,8 @@ export class NewCardModelComponent implements OnDestroy, OnInit {
   ) {
     this.cardListModelSubscription = this.cardListModelService.cardListDataModel.subscribe(modelData => {
       this.cardListModel = modelData;
-      this.parentListId = data.listId;
+      this.parentListId = data.list.id;
+      this.parentListName = data.list.name;
     });
   }
   ngOnInit() {
